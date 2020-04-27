@@ -2,21 +2,21 @@
 
   <mat-form-field fxFlex floatLabel="auto"  class="example-full-width">
     <mat-label>Cycle</mat-label>
-    <input matInput placeholder="Cycle" name="recipientPartyName">
+    <input matInput placeholder="Cycle" name="cycle" #cycleInput>
   </mat-form-field>
 
   <mat-form-field fxFlex floatLabel="auto"  class="example-full-width">
     <mat-label>Level</mat-label>
-    <input matInput placeholder="Level" name="recipientPartyLegalId">
+    <input matInput placeholder="Level" name="level" #levelInput>
   </mat-form-field>
 
   <mat-form-field fxFlex floatLabel="auto"  class="example-full-width">
     <mat-label>Label</mat-label>
-    <input matInput placeholder="Label" name="invoiceNumber">
+    <input matInput placeholder="Label" name="label" #labelInput>
   </mat-form-field>
 
 
   <div class="button-row">
-    <button mat-flat-button color="primary">Save</button>
+    <button mat-flat-button color="primary" (click)="onSave()">Save</button>
   </div>
 </form>
