@@ -21,6 +21,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatSelectModule} from "@angular/material/select";
 import {MatNativeDateModule} from "@angular/material/core";
+import { ShadowDirective } from './utils/shadow.directive';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {MatNativeDateModule} from "@angular/material/core";
     ClassroomDialogComponent,
     StudentListComponent,
     StudentItemComponent,
-    StudentDetailsComponent
+    StudentDetailsComponent,
+    ShadowDirective
   ],
   imports: [
     BrowserModule,
