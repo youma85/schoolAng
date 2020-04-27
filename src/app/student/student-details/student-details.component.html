@@ -1,0 +1,49 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>First Name</mat-label>
+    <input matInput placeholder="First Name">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>First Name</mat-label>
+    <input matInput placeholder="Last Name">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Birth Date</mat-label>
+    <input matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Birth place</mat-label>
+    <input matInput placeholder="Birth place">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Address</mat-label>
+    <input matInput placeholder="Address">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>City</mat-label>
+    <input matInput placeholder="City">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Classroom</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let classroom of classrooms" [value]="classroom.id">
+        {{classroom.cycle}}: {{classroom.level}}: {{classroom.label}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <input placeholder="Photo" type="file" (change)="onImageUploaded($event)">
+
+  <div class="button-row">
+    <button mat-flat-button color="primary">Save</button>
+  </div>
+
+</form>

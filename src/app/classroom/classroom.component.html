@@ -1,0 +1,33 @@
+<div class="button-row">
+  <button mat-flat-button color="primary">New Classroom</button>
+</div>
+
+<mat-table [dataSource]="dataSource" class="width-table">
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef>No.</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="cycle">
+    <mat-header-cell *matHeaderCellDef>Cycle</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.cycle }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="level">
+    <mat-header-cell *matHeaderCellDef>Level</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.level }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="label">
+    <mat-header-cell *matHeaderCellDef>Label</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.label }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+
+
+<mat-card>
+  <app-classroom-dialog></app-classroom-dialog>
+</mat-card>
