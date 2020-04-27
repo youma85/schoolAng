@@ -10,6 +10,8 @@ import {Student} from "../student";
 })
 export class StudentListComponent implements OnInit {
 
+  @Output() studentSelected = new EventEmitter<Student>();
+
   classroom: Classroom[] = [
     new Classroom(1, 'Primaire', 'C2', 'C2 B'),
     new Classroom(2,  'matérnelle', 'PS', 'PS A')
@@ -36,5 +38,7 @@ export class StudentListComponent implements OnInit {
   }
 
   onStudentSelected(student: Student) {
+    this.studentSelected.emit(student);
   }
+
 }

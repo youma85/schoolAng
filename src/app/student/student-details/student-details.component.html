@@ -1,46 +1,52 @@
 <form class="example-form">
   <mat-form-field class="example-full-width">
     <mat-label>First Name</mat-label>
-    <input matInput placeholder="First Name">
+    <input matInput placeholder="First Name" value="{{student.firstName}}">
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>First Name</mat-label>
-    <input matInput placeholder="Last Name">
+    <input matInput placeholder="Last Name" value="{{student.lastName}}">
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>Birth Date</mat-label>
-    <input matInput [matDatepicker]="picker">
+    <input matInput [matDatepicker]="picker"  value="{{student.birthDate}}">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>Birth place</mat-label>
-    <input matInput placeholder="Birth place">
+    <input matInput placeholder="Birth place" value="{{student.birthplace}}">
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>Address</mat-label>
-    <input matInput placeholder="Address">
+    <input matInput placeholder="Address"  value="{{student.address}}">
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>City</mat-label>
-    <input matInput placeholder="City">
+    <input matInput placeholder="City"  value="{{student.city}}">
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>Classroom</mat-label>
-    <mat-select>
+    <mat-select  [value]="student.classroom.id">
       <mat-option *ngFor="let classroom of classrooms" [value]="classroom.id">
         {{classroom.cycle}}: {{classroom.level}}: {{classroom.label}}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
-  <input placeholder="Photo" type="file" (change)="onImageUploaded($event)">
+  <section>
+    <img mat-card-image src="{{student.photo}}" class="card-image" >
+  </section>
+
+  <section>
+    <input placeholder="Photo" type="file" (change)="onImageUploaded($event)">
+  </section>
 
   <div class="button-row">
     <button mat-flat-button color="primary">Save</button>
