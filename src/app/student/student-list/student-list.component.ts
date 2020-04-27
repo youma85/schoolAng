@@ -20,7 +20,9 @@ export class StudentListComponent implements OnInit {
       'Casablanca', '', 'Casablanca', 'assets/img/boy1.png', this.classroom[0]),
     new Student(2, 'Charaf', 'Hafssa', new Date('13/12/2018'),
       'Casablanca', '', 'Casablanca', 'assets/img/girl.png', this.classroom[1]),
-    new Student(1, 'Jilali', 'Mourad', new Date('20/03/2013'),
+    new Student(3, 'Jilali', 'Mourad', new Date('20/03/2013'),
+      'Casablanca', '', 'Casablanca', 'assets/img/boy2.png', this.classroom[1]),
+    new Student(4, 'Jilali', 'Mourad', new Date('20/03/2013'),
       'Casablanca', '', 'Casablanca', 'assets/img/boy2.png', this.classroom[1]),
   ];
 

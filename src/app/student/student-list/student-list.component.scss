@@ -1,11 +1,22 @@
-.example-card {
-  max-width: 400px;
+.cardList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
-.mat-card-actions .flex-spacer{
-  width: 100%;
+.cardList > * {
+  box-sizing: border-box;
 }
 
+.cardList > *:not(:last-child) {
+  margin-right: 32px;
+}
+
+.btn{
+  margin: 5px;
+}
+// item
 .card-image{
   height: 300px;
   width: 300px;
@@ -18,3 +29,14 @@
   margin: auto;
   text-align: center;
 }
+
+.mat-card-actions .flex-spacer{
+  width: 100%;
+}
+
+.example-card {
+  width: 300px;
+  flex: 0 1 calc(23% - 32px);
+  margin: 32px;
+}
+
