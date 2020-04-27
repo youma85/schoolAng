@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 import {Classroom} from "../../classroom/classroom";
 import {Student} from "../student";
@@ -33,5 +33,8 @@ export class StudentListComponent implements OnInit {
 
   getImgContent(img: string): SafeUrl {
     return this.sanitizer.bypassSecurityTrustStyle(`url(${img})`);
+  }
+
+  onStudentSelected(student: Student) {
   }
 }

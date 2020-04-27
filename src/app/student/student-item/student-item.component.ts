@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Student} from "../student";
+import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-student-item',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentItemComponent implements OnInit {
 
-  constructor() { }
+  @Input() student: Student;
+  @Output() studentSelected = new EventEmitter<void>();
+
+  constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
   }
 
+  getImgContent(img: string): SafeUrl {
+    return this.sanitizer.bypassSecurityTrustStyle(`url(${img})`);
+  }
+
+  onClick() {
+    this.studentSelected.emit();
+  }
 }
