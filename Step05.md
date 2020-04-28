@@ -7,3 +7,9 @@
 add routes to the module
 
 
+**adding router Links**
+
+Add router link in the nav bar
+
+Change style of the active route  
+

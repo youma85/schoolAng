@@ -3,7 +3,7 @@
 
   <div class="spacer"></div>
 
-  <a mat-button (click)="onSelect('classrooms')">Classrooms</a>
-  <a mat-button (click)="onSelect('students')">Students</a>
+  <a mat-button routerLink="/students" routerLinkActive="active">Students</a>
+  <a mat-button routerLink="/classrooms" routerLinkActive="active">Classrooms</a>
   <a mat-raised-button color="accent">Sign Up</a>
 </mat-toolbar>

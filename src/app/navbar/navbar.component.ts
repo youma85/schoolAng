@@ -13,8 +13,4 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  onSelect(page: string) {
-    this.pageSelected.emit(page);
-  }
 }
