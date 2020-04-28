@@ -32,4 +32,8 @@ export class StudentService {
   getStudent(id: number) {
     return this.students[id];
   }
+
+  addStudent(student: Student) {
+    this.students.push(student);
+  }
 }

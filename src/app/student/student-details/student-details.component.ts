@@ -43,4 +43,10 @@ export class StudentDetailsComponent implements OnInit {
   onImageUploaded($event: Event) {
 
   }
+
+  saveStudent() {
+    this.studentService.addStudent(this.student);
+    this.studentService.studentSelected.next(this.student);
+    this.router.navigate(['/students']);
+  }
 }

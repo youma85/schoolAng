@@ -18,3 +18,5 @@ Change style of the active route
 Manage children routes of student component
 
 Adding new Student button and navigate to the detail component
+
+Save Student
