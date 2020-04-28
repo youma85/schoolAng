@@ -20,3 +20,5 @@ Manage children routes of student component
 Adding new Student button and navigate to the detail component
 
 Save Student
+
+Use classroom-dialog component as a material dialog
