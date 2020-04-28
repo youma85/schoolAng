@@ -1,8 +1,5 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
-import {Classroom} from "../../classroom/classroom";
+import {Component,  OnInit} from '@angular/core';
 import {Student} from "../student";
-import {ClassroomService} from "../../services/classroom.service";
 import {StudentService} from "../../services/student.service";
 
 @Component({
@@ -12,8 +9,6 @@ import {StudentService} from "../../services/student.service";
 })
 export class StudentListComponent implements OnInit {
 
-  @Output() studentSelected = new EventEmitter<Student>();
-
   students: Student[];
 
   constructor(private studentService: StudentService) {
@@ -21,10 +16,6 @@ export class StudentListComponent implements OnInit {
 
   ngOnInit(): void {
     this.students = this.studentService.getStudents();
-  }
-
-  onStudentSelected(student: Student) {
-    this.studentSelected.emit(student);
   }
 
 }

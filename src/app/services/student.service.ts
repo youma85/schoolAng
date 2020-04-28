@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {ClassroomService} from './classroom.service';
 import {Student} from "../student/student";
 
@@ -6,6 +6,9 @@ import {Student} from "../student/student";
   providedIn: 'root'
 })
 export class StudentService {
+
+  studentSelected = new EventEmitter<Student>();
+
   students = [];
 
   constructor(private classroomService: ClassroomService) {
