@@ -29,4 +29,7 @@ export class StudentService {
     return this.students;
   }
 
+  getStudent(id: number) {
+    return this.students[id];
+  }
 }
