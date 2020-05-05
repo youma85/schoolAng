@@ -22,6 +22,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatSelectModule} from "@angular/material/select";
 import {MatNativeDateModule} from "@angular/material/core";
 import { ShadowDirective } from './utils/shadow.directive';
+import { FirstcharcateruppercasePipe } from './utils/firstcharcateruppercase.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ShadowDirective } from './utils/shadow.directive';
     StudentListComponent,
     StudentItemComponent,
     StudentDetailsComponent,
-    ShadowDirective
+    ShadowDirective,
+    FirstcharcateruppercasePipe
   ],
   imports: [
     BrowserModule,

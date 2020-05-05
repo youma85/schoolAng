@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component,  Input, OnInit} from '@angular/core';
 import {Student} from "../student";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
+import {StudentService} from "../../services/student.service";
 
 @Component({
   selector: 'app-student-item',
@@ -10,9 +11,9 @@ import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 export class StudentItemComponent implements OnInit {
 
   @Input() student: Student;
-  @Output() studentSelected = new EventEmitter<void>();
 
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(private studentService: StudentService,
+              private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
   }
@@ -22,6 +23,6 @@ export class StudentItemComponent implements OnInit {
   }
 
   onClick() {
-    this.studentSelected.emit();
+    this.studentService.studentSelected.emit(this.student);
   }
 }
