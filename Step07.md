@@ -9,4 +9,6 @@ use TD approch in the classroom dialog
 
 disable save button if a field is not filled
 
+**Adding Clear button**
 
+add a button to reset values
