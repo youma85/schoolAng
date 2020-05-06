@@ -12,3 +12,7 @@ disable save button if a field is not filled
 **Adding Clear button**
 
 add a button to reset values
+
+**Adding message error**
+
+get errors of the element of form

@@ -3,16 +3,28 @@
   <mat-form-field fxFlex floatLabel="auto"  class="example-full-width">
     <mat-label>Cycle</mat-label>
     <input matInput placeholder="Cycle" name="cycle" ngModel required>
+
+    <mat-error *ngIf="form.controls['cycle']?.errors?.required">
+      Cycle is <strong>required</strong>
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field fxFlex floatLabel="auto"  class="example-full-width">
     <mat-label>Level</mat-label>
     <input matInput placeholder="Level" name="level" ngModel required>
+
+    <mat-error *ngIf="form.controls['level']?.errors?.required">
+      Level is <strong>required</strong>
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field fxFlex floatLabel="auto"  class="example-full-width">
     <mat-label>Label</mat-label>
     <input matInput placeholder="Label" name="label" ngModel required>
+
+    <mat-error *ngIf="form.controls['label']?.errors?.required">
+      Label is <strong>required</strong>
+    </mat-error>
   </mat-form-field>
 
 
