@@ -1,12 +1,3 @@
 <mat-card>
-  <app-student-list></app-student-list>
-</mat-card>
-
-<mat-card>
-  <app-student-details
-    *ngIf="currentStudent; else noStudent"
-    [student]="currentStudent"></app-student-details>
-  <ng-template #noStudent>
-    <p>No student selected</p>
-  </ng-template>
+  <router-outlet></router-outlet>
 </mat-card>

@@ -1,5 +1,5 @@
 <div class="button-row">
-  <button mat-flat-button color="primary">New Classroom</button>
+  <button mat-flat-button color="primary"  (click)="openDialog()">New Classroom</button>
 </div>
 
 <mat-table [dataSource]="dataSource" class="width-table">
@@ -24,10 +24,6 @@
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"
+           (click)="showDataInDialog(row.id)"></mat-row>
 </mat-table>
-
-
-<mat-card>
-  <app-classroom-dialog (classroomAdded)="onClassroomAdded($event)"></app-classroom-dialog>
-</mat-card>

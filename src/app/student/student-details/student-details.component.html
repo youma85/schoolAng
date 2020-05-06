@@ -40,7 +40,7 @@
     </mat-select>
   </mat-form-field>
 
-  <section>
+  <section *ngIf="editMode">
     <img mat-card-image src="{{student.photo}}" class="card-image" >
   </section>
 
@@ -49,7 +49,7 @@
   </section>
 
   <div class="button-row">
-    <button mat-flat-button color="primary">Save</button>
+    <button mat-flat-button color="primary" (click)="saveStudent()">Save</button>
   </div>
 
 </form>
