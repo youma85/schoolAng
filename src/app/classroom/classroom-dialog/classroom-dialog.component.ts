@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, Inject, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {Classroom} from "../classroom";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {ClassroomService} from "../../services/classroom.service";

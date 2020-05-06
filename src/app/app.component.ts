@@ -8,9 +8,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'schoolAng';
 
-  loadedPage = 'students';
-
-  onNavigate(page: string) {
-    this.loadedPage = page;
-  }
 }
