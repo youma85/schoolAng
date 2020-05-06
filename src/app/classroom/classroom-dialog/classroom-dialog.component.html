@@ -1,22 +1,22 @@
-<div class="capture-form-canvas" fxLayout="column" fxLayoutGap="8px" fxLayoutWrap fxLayoutAlign="flex-start">
+<form (ngSubmit)="onSave(form)" #form="ngForm">
 
   <mat-form-field fxFlex floatLabel="auto"  class="example-full-width">
     <mat-label>Cycle</mat-label>
-    <input matInput placeholder="Cycle" name="cycle" #cycleInput value="{{classroom.cycle}}">
+    <input matInput placeholder="Cycle" name="cycle" ngModel>
   </mat-form-field>
 
   <mat-form-field fxFlex floatLabel="auto"  class="example-full-width">
     <mat-label>Level</mat-label>
-    <input matInput placeholder="Level" name="level" #levelInput value="{{classroom.level}}">
+    <input matInput placeholder="Level" name="level" ngModel>
   </mat-form-field>
 
   <mat-form-field fxFlex floatLabel="auto"  class="example-full-width">
     <mat-label>Label</mat-label>
-    <input matInput placeholder="Label" name="label" #labelInput value="{{classroom.label}}">
+    <input matInput placeholder="Label" name="label" ngModel>
   </mat-form-field>
 
 
   <div class="button-row">
-    <button mat-flat-button color="primary" (click)="onSave()">Save</button>
+    <button mat-flat-button color="primary">Save</button>
   </div>
-</div>
+</form>

@@ -24,6 +24,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import { ShadowDirective } from './utils/shadow.directive';
 import { FirstcharcateruppercasePipe } from './utils/firstcharcateruppercase.pipe';
 import { AppRoutingModule } from './app-routing.module';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { AppRoutingModule } from './app-routing.module';
     MatDatepickerModule,
     MatSelectModule,
     MatNativeDateModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
