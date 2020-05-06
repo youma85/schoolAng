@@ -1,12 +1,13 @@
-import {EventEmitter, Injectable} from '@angular/core';
-import {Classroom} from "../classroom/classroom";
+import { Injectable} from '@angular/core';
+import {Subject} from 'rxjs';
+import {Classroom} from '../classroom/classroom';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClassroomService {
 
-  classroomsChanged = new EventEmitter<void>();
+  classroomsChanged = new Subject<void>();
 
   classrooms: Classroom[] = [
     new Classroom(0, 'primaire', 'CP', 'A'),

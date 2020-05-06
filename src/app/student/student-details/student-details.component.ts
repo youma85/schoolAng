@@ -31,12 +31,12 @@ export class StudentDetailsComponent implements OnInit {
       this.id = +params.id;
       this.student = this.studentService.getStudent(this.id);
       this.editMode =  params.id != null;
+      if (!this.editMode){
+        this.student = new Student();
+        this.student.classroom = new Classroom();
+      }
     });
 
-    if (!this.editMode){
-      this.student = new Student();
-      this.student.classroom = new Classroom();
-    }
   }
 
 
@@ -45,7 +45,7 @@ export class StudentDetailsComponent implements OnInit {
   }
 
   saveStudent() {
-    this.studentService.addStudent(this.student);
+    this.studentService.saveStudent(this.student);
     this.studentService.studentSelected.next(this.student);
     this.router.navigate(['/students']);
   }

@@ -1,13 +1,14 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ClassroomService} from './classroom.service';
-import {Student} from "../student/student";
+import {Student} from '../student/student';
+import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService {
 
-  studentSelected = new EventEmitter<Student>();
+  studentSelected = new Subject<Student>();
 
   students = [];
 
@@ -33,7 +34,11 @@ export class StudentService {
     return this.students[id];
   }
 
-  addStudent(student: Student) {
-    this.students.push(student);
+  saveStudent(student: Student) {
+    if (student.id === undefined){
+      this.students.push(student);
+    } else {
+      this.students[student.id] = student;
+    }
   }
 }
