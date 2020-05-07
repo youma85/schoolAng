@@ -24,7 +24,10 @@ import {MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats, MatNativeDateModule} 
 import { ShadowDirective } from './utils/shadow.directive';
 import { FirstcharcateruppercasePipe } from './utils/firstcharcateruppercase.pipe';
 import { AppRoutingModule } from './app-routing.module';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {environment} from '../environments/environment';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireStorageModule} from '@angular/fire/storage';
 
 export const MY_FORMAT: MatDateFormats = {
   parse: {
@@ -66,7 +69,9 @@ export const MY_FORMAT: MatDateFormats = {
     MatSelectModule,
     MatNativeDateModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
