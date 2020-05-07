@@ -29,7 +29,7 @@ export class ClassroomComponent implements OnInit {
 
   showDataInDialog(id: any) {
     const dialogRef = this.dialog.open(ClassroomDialogComponent, {
-      width: '250px',
+      width: '300px',
       data: this.classroomService.getClassroomById(id)
     });
 
@@ -40,7 +40,7 @@ export class ClassroomComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ClassroomDialogComponent, {
-      width: '250px',
+      width: '300px',
       data: new Classroom()
     });
 
