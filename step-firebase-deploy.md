@@ -10,6 +10,12 @@ choose the project in firebase
 
 **Add the project configuration to environment files**
 
+**Install the angular Firebase**
+
+> npm install firebase
+
+restart the server
+
 
 **Deploy your Angular App to Firebase Hosting**
 
@@ -23,11 +29,6 @@ allow read and write without authentication
 
 add AngularFireModule and AngularFireStorageModule to app.module
 
-**Install the angular Firebase**
-
-> ng add firebase
-
-restart the server
 
 **Use firebase storage to store Images**
 
