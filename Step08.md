@@ -12,3 +12,7 @@ use moment in birth date
 
 change the format in app.module
 
+**configure firebase project**
+
+CF. file step-firebase-deploy.md
+
