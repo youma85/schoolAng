@@ -4,7 +4,7 @@ import {Student} from '../student';
 import {ClassroomService} from '../../services/classroom.service';
 import {StudentService} from '../../services/student.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
 
@@ -118,13 +118,13 @@ export class StudentDetailsComponent implements OnInit {
     }
 
     this.studentForm = new FormGroup({
-      'firstName': new FormControl(firstName),
-      'lastName': new FormControl(lastName),
-      'birthDate': new FormControl(birthDate),
-      'birthplace': new FormControl(birthplace),
-      'address': new FormControl(address),
-      'city': new FormControl(city),
-      'classroom': new FormControl(classroom),
+      'firstName': new FormControl(firstName, Validators.required),
+      'lastName': new FormControl(lastName, Validators.required),
+      'birthDate': new FormControl(birthDate, Validators.required),
+      'birthplace': new FormControl(birthplace, Validators.required),
+      'address': new FormControl(address, Validators.required),
+      'city': new FormControl(city, Validators.required),
+      'classroom': new FormControl(classroom, Validators.required),
       'photo': new FormControl(photo)
     });
     this.imgSrc = 'assets/img/Placeholder.jpg ';

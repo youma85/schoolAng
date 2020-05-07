@@ -53,7 +53,7 @@
   </section>
 
   <div class="button-row">
-    <button mat-flat-button color="primary">Save</button>
+    <button mat-flat-button color="primary" [disabled]="!studentForm.valid">Save</button>
   </div>
 
 </form>

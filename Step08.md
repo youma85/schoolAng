@@ -26,3 +26,6 @@ and add images
 **Syncing HTML with the Form**
 
 syncing template of student details with the form
+
+
+**adding Validation to the form**
