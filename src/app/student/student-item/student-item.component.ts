@@ -1,8 +1,8 @@
 import {Component,  Input, OnInit} from '@angular/core';
-import {Student} from "../student";
-import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
-import {StudentService} from "../../services/student.service";
-import {Router} from "@angular/router";
+import {Student} from '../student';
+import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
+import {StudentService} from '../../services/student.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-student-item',
@@ -25,7 +25,7 @@ export class StudentItemComponent implements OnInit {
   }
 
   onClick(idStudent: number) {
-    this.studentService.studentSelected.emit(this.student);
+    this.studentService.studentSelected.next(this.student);
     this.router.navigate(['/students', idStudent]);
   }
 }
