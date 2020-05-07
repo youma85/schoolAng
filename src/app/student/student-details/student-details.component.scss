@@ -3,3 +3,9 @@
   width: 300px;
   object-fit: contain;
 }
+
+.example-card {
+  width: 300px;
+  flex: 0 1 calc(23% - 32px);
+  margin: 32px;
+}

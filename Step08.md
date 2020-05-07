@@ -21,3 +21,8 @@ CF. file step-firebase-deploy.md
 Create folder in firestore with name images
 
 and add images
+
+
+**Syncing HTML with the Form**
+
+syncing template of student details with the form

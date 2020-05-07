@@ -1,9 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Classroom} from "../../classroom/classroom";
-import {Student} from "../student";
-import {ClassroomService} from "../../services/classroom.service";
-import {StudentService} from "../../services/student.service";
-import {ActivatedRoute, Params, Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {Classroom} from '../../classroom/classroom';
+import {Student} from '../student';
+import {ClassroomService} from '../../services/classroom.service';
+import {StudentService} from '../../services/student.service';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {FormControl, FormGroup} from '@angular/forms';
+import {AngularFireStorage} from '@angular/fire/storage';
+import {finalize} from 'rxjs/operators';
 
 @Component({
   selector: 'app-student-details',
@@ -13,40 +16,119 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 export class StudentDetailsComponent implements OnInit {
   classrooms: Classroom[];
 
-  @Input() student: Student;
+  student: Student;
 
   id: number;
 
   editMode = false;
 
+  studentForm: FormGroup;
+
+  imgSrc: string;
+
+  selectedImage: any = null;
+
+  oldPhotoPath: string;
+
   constructor(private classroomService: ClassroomService,
               private  studentService: StudentService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private storage: AngularFireStorage) {
+  }
 
   ngOnInit(): void {
     this.classrooms = this.classroomService.getClassrooms();
 
     this.route.params.subscribe((params: Params) => {
       this.id = +params.id;
-      this.student = this.studentService.getStudent(this.id);
-      this.editMode =  params.id != null;
-      if (!this.editMode){
-        this.student = new Student();
-        this.student.classroom = new Classroom();
-      }
+      this.editMode = params.id != null;
+      this.initForm();
     });
-
-  }
-
-
-  onImageUploaded($event: Event) {
-
   }
 
   saveStudent() {
-    this.studentService.saveStudent(this.student);
-    this.studentService.studentSelected.next(this.student);
-    this.router.navigate(['/students']);
+    console.log(this.studentForm);
+    this.student = this.studentForm.value;
+    if (this.editMode) {
+      this.student.id = this.id;
+    }
+    if (this.selectedImage) {
+      const namePart = this.selectedImage.name.split('.');
+      const photoName = this.student.firstName + '_' + this.student.lastName + '.' + namePart[namePart.length - 1];
+      const filePath = `images/${photoName}`;
+      const fileRef = this.storage.ref(filePath);
+      this.storage.upload(filePath, this.selectedImage).snapshotChanges()
+        .pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe((url) => {
+              this.student.photo = filePath;
+              this.studentService.saveStudent(this.student);
+              this.studentService.studentSelected.next(this.student);
+              this.router.navigate(['/students']);
+            });
+          })
+        ).subscribe();
+    } else {
+      this.student.photo = this.oldPhotoPath;
+      this.studentService.saveStudent(this.student);
+      this.studentService.studentSelected.next(this.student);
+      this.router.navigate(['/students']);
+    }
+
+  }
+
+  showPreview(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => this.imgSrc = e.target.result;
+      reader.readAsDataURL(event.target.files[0]);
+      this.selectedImage = event.target.files[0];
+    } else {
+      this.imgSrc = 'assets/img/Placeholder.jpg';
+      this.selectedImage = null;
+    }
+  }
+
+
+  initForm() {
+    let firstName = '';
+    let lastName = '';
+    let birthDate = '';
+    let birthplace = '';
+    let address = '';
+    let city = '';
+    let classroom = '';
+    let photo = '';
+
+    if (this.editMode) {
+      const student = this.studentService.getStudent(this.id);
+      firstName = student.firstName;
+      lastName = student.lastName;
+      birthDate = student.birthDate;
+      birthplace = student.birthplace;
+      address = student.address;
+      city = student.city;
+      classroom = student.classroom;
+      const ref = this.storage.ref(student.photo);
+      this.oldPhotoPath = student.photo;
+      ref.getDownloadURL().subscribe((url) => {
+        this.imgSrc = url;
+      });
+    }
+
+    this.studentForm = new FormGroup({
+      'firstName': new FormControl(firstName),
+      'lastName': new FormControl(lastName),
+      'birthDate': new FormControl(birthDate),
+      'birthplace': new FormControl(birthplace),
+      'address': new FormControl(address),
+      'city': new FormControl(city),
+      'classroom': new FormControl(classroom),
+      'photo': new FormControl(photo)
+    });
+    this.imgSrc = 'assets/img/Placeholder.jpg ';
+    this.selectedImage = null;
+
   }
 }
