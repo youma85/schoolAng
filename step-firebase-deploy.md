@@ -28,3 +28,11 @@ add AngularFireModule and AngularFireStorageModule to app.module
 > ng add firebase
 
 restart the server
+
+**Use firebase storage to store Images**
+
+Configure storage in firebase
+
+allow read and write without authentication
+
+add AngularFireModule and AngularFireStorageModule to app.module

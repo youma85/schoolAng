@@ -16,3 +16,8 @@ change the format in app.module
 
 CF. file step-firebase-deploy.md
 
+**get images from firestore**
+
+Create folder in firestore with name images
+
+and add images
