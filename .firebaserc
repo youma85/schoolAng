@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "schoolapplication-2037d": {
+      "hosting": {
+        "schoolAng": [
+          "schoolapplication-2037d"
+        ]
+      }
+    }
+  }
+}
