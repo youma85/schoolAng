@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {ClassroomService} from './classroom.service';
 import {Student} from '../student/student';
 import {Subject} from 'rxjs';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +16,14 @@ export class StudentService {
   constructor(private classroomService: ClassroomService) {
     const classrooms = this.classroomService.getClassrooms();
     this.students = [
-      new Student(0, 'Arbi', 'Ahmed', new Date('20/03/2013'),
-        'Casablanca', '', 'Casablanca', 'assets/img/boy1.png', classrooms[0]),
-      new Student(1, 'Charaf', 'Hafssa', new Date('13/12/2018'),
-        'Casablanca', '', 'Casablanca', 'assets/img/girl.png', classrooms[1]),
-      new Student(2, 'Jilali', 'Mourad', new Date('20/03/2013'),
-        'Casablanca', '', 'Casablanca', 'assets/img/boy2.png', classrooms[1]),
-      new Student(3, 'Jilali', 'Mehdi', new Date('20/03/2006'),
-        'Casablanca', '', 'Casablanca', 'assets/img/boy2.png', classrooms[1]),
+      new Student(0, 'Arbi', 'Ahmed', moment('13/12/2018','DD/MM/YYYY').toDate(),
+        'Casablanca', '', 'Casablanca', 'images/boy1.png', classrooms[0]),
+      new Student(1, 'Charaf', 'Hafssa', moment('22/12/2019','DD/MM/YYYY').toDate(),
+        'Casablanca', '', 'Casablanca', 'images/girl.png', classrooms[1]),
+      new Student(2, 'Jilali', 'Mourad', moment('13/12/2020','DD/MM/YYYY').toDate(),
+        'Casablanca', '', 'Casablanca', 'images/boy2.png', classrooms[1]),
+      new Student(3, 'Jilali', 'Mehdi', moment('14/12/2008','DD/MM/YYYY').toDate(),
+        'Casablanca', '', 'Casablanca', 'images/boy2.png', classrooms[1]),
     ];
   }
 

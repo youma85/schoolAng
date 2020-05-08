@@ -20,11 +20,28 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatSelectModule} from "@angular/material/select";
-import {MatNativeDateModule} from "@angular/material/core";
+import {MatNativeDateModule, MatDateFormats, MAT_DATE_LOCALE, MAT_DATE_FORMATS} from "@angular/material/core";
 import { ShadowDirective } from './utils/shadow.directive';
 import { FirstcharcateruppercasePipe } from './utils/firstcharcateruppercase.pipe';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import {environment} from '../environments/environment';  
+import {AngularFireModule} from '@angular/fire';  
+import {AngularFireStorageModule} from '@angular/fire/storage';
+
+export const MY_FORMAT: MatDateFormats = {  
+  parse: {  
+  dateInput: 'DD/MM/YYYY',  
+  },  
+  display: {  
+  dateInput: 'DD/MM/YYYY',  
+  monthYearLabel: 'MMM YYYY',  
+  dateA11yLabel: 'DD/MM/YYYY',  
+  monthYearA11yLabel: 'MMMM YYYY',  
+  },  
+  };
+  
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,9 +69,16 @@ import { AppRoutingModule } from './app-routing.module';
     MatDatepickerModule,
     MatSelectModule,
     MatNativeDateModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [  
+    { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },  
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMAT }  
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

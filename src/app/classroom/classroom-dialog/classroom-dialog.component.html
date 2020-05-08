@@ -1,22 +1,31 @@
-<div class="capture-form-canvas" fxLayout="column" fxLayoutGap="8px" fxLayoutWrap fxLayoutAlign="flex-start">
+<form (ngSubmit)="onSave(f)" #f="ngForm" class="capture-form-canvas" fxLayout="column" fxLayoutGap="8px" fxLayoutWrap fxLayoutAlign="flex-start">
 
   <mat-form-field fxFlex floatLabel="auto"  class="example-full-width">
     <mat-label>Cycle</mat-label>
-    <input matInput placeholder="Cycle" name="cycle" #cycleInput value="{{classroom.cycle}}">
+    <input matInput required placeholder="Cycle" name="cycle" ngModel>
+    <mat-error *ngIf="f.controls['cycle']?.errors?.required" >Cycle is Required</mat-error>
   </mat-form-field>
 
   <mat-form-field fxFlex floatLabel="auto"  class="example-full-width">
     <mat-label>Level</mat-label>
-    <input matInput placeholder="Level" name="level" #levelInput value="{{classroom.level}}">
+    <input matInput required placeholder="Level" name="level" ngModel>
+    <mat-error *ngIf="f.controls['level']?.errors?.required" >Level is Required</mat-error>
   </mat-form-field>
 
   <mat-form-field fxFlex floatLabel="auto"  class="example-full-width">
     <mat-label>Label</mat-label>
-    <input matInput placeholder="Label" name="label" #labelInput value="{{classroom.label}}">
+    <input matInput  required placeholder="Label" name="label" ngModel>
+    <mat-error *ngIf="f.controls['label']?.errors?.required" >Label is Required</mat-error>
   </mat-form-field>
+   
 
 
   <div class="button-row">
-    <button mat-flat-button color="primary" (click)="onSave()">Save</button>
+    <button mat-flat-button color="primary" type="submit" [disabled]="!f.valid" >{{editMode ? 'update' : 'add'}}</button>
   </div>
-</div>
+  
+  <div class="button-row">
+    <button mat-flat-button color="primary" type="button" (click)="f.reset()" >Clear</button>
+  </div>
+
+</form>
