@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angularschool-3450b": {
+      "hosting": {
+        "schoolAng": [
+          "angularschool-3450b"
+        ]
+      }
+    }
+  }
+}

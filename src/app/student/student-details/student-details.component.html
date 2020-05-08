@@ -1,55 +1,59 @@
-<form class="example-form">
+<form class="example-form" [formGroup]="studentForm" (ngSubmit)="saveStudent()">
   <mat-form-field class="example-full-width">
     <mat-label>First Name</mat-label>
-    <input matInput placeholder="First Name" value="{{student.firstName}}">
+    <input matInput placeholder="First Name" formControlName="firstName">
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>First Name</mat-label>
-    <input matInput placeholder="Last Name" value="{{student.lastName}}">
+    <input matInput placeholder="Last Name" formControlName="lastName">
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>Birth Date</mat-label>
-    <input matInput [matDatepicker]="picker"  value="{{student.birthDate}}">
+    <input matInput [matDatepicker]="picker"  formControlName="birthDate">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>Birth place</mat-label>
-    <input matInput placeholder="Birth place" value="{{student.birthplace}}">
+    <input matInput placeholder="Birth place" formControlName="birthplace">
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>Address</mat-label>
-    <input matInput placeholder="Address"  value="{{student.address}}">
+    <input matInput placeholder="Address" formControlName="address">
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>City</mat-label>
-    <input matInput placeholder="City"  value="{{student.city}}">
+    <input matInput placeholder="City"  formControlName="city">
   </mat-form-field>
+
+
 
   <mat-form-field class="example-full-width">
     <mat-label>Classroom</mat-label>
-    <mat-select  [value]="student.classroom.id">
-      <mat-option *ngFor="let classroom of classrooms" [value]="classroom.id">
-        {{classroom.cycle}}: {{classroom.level}}: {{classroom.label}}
+    <mat-select formControlName="classroom">
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let classroom of classrooms" [value]="classroom">
+        {{classroom.cycle}} - {{classroom.level}} - {{classroom.label}}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
-  <section *ngIf="editMode">
-    <img mat-card-image src="{{student.photo}}" class="card-image" >
-  </section>
-
   <section>
-    <input placeholder="Photo" type="file" (change)="onImageUploaded($event)">
+    <div>
+      <img [src]="imgSrc" width="350px" height="250px" (click)="fileUploader.click()">
+    </div>
+    <div>
+      <input type="file" accept="image/*" formControlName="photo" (change)="showPreview($event)" #fileUploader>
+    </div>
   </section>
 
   <div class="button-row">
-    <button mat-flat-button color="primary" (click)="saveStudent()">Save</button>
+    <button mat-flat-button color="primary" [disabled]="!studentForm.valid">Save</button>
   </div>
 
 </form>
