@@ -1,0 +1,108 @@
+{
+  "classrooms": [
+    {
+      "id": "0",
+      "cycle": "primaire",
+      "level": "CP",
+      "label": "A"
+    },
+    {
+      "id": "1",
+      "cycle": "primaire",
+      "level": "CP",
+      "label": "B"
+    },
+    {
+      "id": "2",
+      "cycle": "primaire",
+      "level": "CE1",
+      "label": "A"
+    },
+    {
+      "id": "3",
+      "cycle": "primaire",
+      "level": "CE1",
+      "label": "B"
+    },
+    {
+      "id": 4,
+      "cycle": "primaire",
+      "level": "CM1",
+      "label": "B"
+    },
+    {
+      "cycle": "primaire",
+      "level": "CM1",
+      "label": "A",
+      "id": 5
+    }
+  ],
+  "students": [
+    {
+      "id": 0,
+      "lastName": "RAFII",
+      "firstName": "youssef",
+      "birthDate": "15/05/2020",
+      "birthplace": "Casablanca",
+      "address": "adr 1",
+      "city": "Casablanca",
+      "photo": "images/boy1.png",
+      "classroom": "3"
+    },
+    {
+      "id": 1,
+      "lastName": "Charaf",
+      "firstName": "hafssa",
+      "birthDate": "13/12/2018",
+      "birthplace": "Casablanca",
+      "address": "adr2",
+      "city": "Casablanca",
+      "photo": "images/girl1.png",
+      "classroom": "0"
+    },
+    {
+      "id": 2,
+      "lastName": "Jilali",
+      "firstName": "ahmed",
+      "birthDate": "20/12/2015",
+      "birthplace": "Casablanca",
+      "address": "adr3",
+      "city": "Casablanca",
+      "photo": "images/boy2.png",
+      "classroom": 4
+    },
+    {
+      "id": 3,
+      "lastName": "Hassani",
+      "firstName": "Fatima",
+      "birthDate": "15/03/2016",
+      "birthplace": "Casablanca",
+      "address": "adr4",
+      "city": "Casablanca",
+      "photo": "images/girl2.png",
+      "classroom": "1"
+    },
+    {
+      "firstName": "rafii",
+      "lastName": "taha",
+      "birthDate": "03/02/2015",
+      "birthplace": "casablanca",
+      "address": "aaa",
+      "city": "aa",
+      "classroom": 4,
+      "photo": "images/rafii_taha.png",
+      "id": 4
+    },
+    {
+      "firstName": "test2",
+      "lastName": "22",
+      "birthDate": "13/05/2020",
+      "birthplace": "2",
+      "address": "2",
+      "city": "2",
+      "classroom": "1",
+      "id": 5,
+      "photo": "images/test2_22.png"
+    }
+  ]
+}
