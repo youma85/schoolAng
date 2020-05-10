@@ -68,4 +68,14 @@ get the stored token and add it to the requests
 
 create a new service to attach the token to a request
 
+**Adding logout**
+
+add button logout 
+
+**Adding auto login**
+
+Store user in localStorage in order to verify if the user is already authenticated
+
+
+
 

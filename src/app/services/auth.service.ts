@@ -53,5 +53,17 @@ export class AuthService {
   private handleAuthenctication(email: string, token: string) {
     const usr = new User(email, token);
     this.user.next(usr);
+    // convert the usr to string and store it to localStorage
+    localStorage.setItem('userData', JSON.stringify(usr));
+  }
+
+  autoLogin() {
+    const userData: User = JSON.parse(localStorage.getItem('userData'));
+
+    if (!userData) {
+      return;
+    }
+
+    this.user.next(userData);
   }
 }
