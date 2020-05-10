@@ -30,6 +30,8 @@ export class StudentDetailsComponent implements OnInit {
 
   oldPhotoPath: string;
 
+  compareFn: ((f1: any, f2: any) => boolean) | null = this.compareByValue;
+
   constructor(private classroomService: ClassroomService,
               private  studentService: StudentService,
               private route: ActivatedRoute,
@@ -50,8 +52,10 @@ export class StudentDetailsComponent implements OnInit {
   }
 
   saveStudent() {
-    console.log(this.studentForm);
     this.student = this.studentForm.value;
+    this.student.classroom = this.studentForm.value.classroom.id;
+    this.student.birthDate = this.studentForm.value.birthDate;
+
     if (this.editMode) {
       this.student.id = this.id;
     }
@@ -65,7 +69,9 @@ export class StudentDetailsComponent implements OnInit {
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.student.photo = filePath;
-              this.studentService.saveStudent(this.student);
+              this.studentService.saveStudent(this.student).subscribe(response => {
+                console.log(response);
+              });
               this.studentService.studentSelected.next(this.student);
               this.router.navigate(['/students']);
             });
@@ -73,9 +79,11 @@ export class StudentDetailsComponent implements OnInit {
         ).subscribe();
     } else {
       this.student.photo = this.oldPhotoPath;
-      this.studentService.saveStudent(this.student);
-      this.studentService.studentSelected.next(this.student);
-      this.router.navigate(['/students']);
+      this.studentService.saveStudent(this.student).subscribe(response => {
+        console.log(response);
+        this.studentService.studentSelected.next(this.student);
+        this.router.navigate(['/students']);
+      });
     }
 
   }
@@ -96,41 +104,57 @@ export class StudentDetailsComponent implements OnInit {
   initForm() {
     let firstName = '';
     let lastName = '';
-    let birthDate = '';
+    let birthDate: any;
     let birthplace = '';
     let address = '';
     let city = '';
-    let classroom = '';
+    let classroom: any;
     let photo = '';
 
     if (this.editMode) {
-      const student = this.studentService.getStudent(this.id);
-      firstName = student.firstName;
-      lastName = student.lastName;
-      birthDate = student.birthDate;
-      birthplace = student.birthplace;
-      address = student.address;
-      city = student.city;
-      classroom = student.classroom;
-      const ref = this.storage.ref(student.photo);
-      this.oldPhotoPath = student.photo;
-      ref.getDownloadURL().subscribe((url) => {
-        this.imgSrc = url;
+      this.studentService.getStudent(this.id).subscribe(std => {
+        firstName = std.firstName;
+        lastName = std.lastName;
+        birthDate = std.birthDate;
+        birthplace = std.birthplace;
+        address = std.address;
+        city = std.city;
+
+        this.oldPhotoPath = std.photo;
+
+        this.classroomService.getClassroomById(std.classroom).subscribe((value: Classroom) => {
+          classroom = value;
+          this.createFormGroup(firstName, lastName, birthDate, birthplace, address, city, classroom, photo);
+        });
+
+        const ref = this.storage.ref(std.photo);
+        ref.getDownloadURL().subscribe((url) => {
+          this.imgSrc = url;
+        });
       });
+
+    } else {
+      this.createFormGroup(firstName, lastName, birthDate, birthplace, address, city, classroom, photo);
+      this.imgSrc = 'assets/img/Placeholder.jpg ';
+      this.selectedImage = null;
     }
+  }
 
+  private createFormGroup(firstName: string, lastName: string, birthDate: string,
+                          birthplace: string, address: string, city: string, classroom: string, photo: string) {
     this.studentForm = new FormGroup({
-      'firstName': new FormControl(firstName, Validators.required),
-      'lastName': new FormControl(lastName, Validators.required),
-      'birthDate': new FormControl(birthDate, Validators.required),
-      'birthplace': new FormControl(birthplace, Validators.required),
-      'address': new FormControl(address, Validators.required),
-      'city': new FormControl(city, Validators.required),
-      'classroom': new FormControl(classroom, Validators.required),
-      'photo': new FormControl(photo)
+      firstName: new FormControl(firstName, Validators.required),
+      lastName: new FormControl(lastName, Validators.required),
+      birthDate: new FormControl(birthDate, Validators.required),
+      birthplace: new FormControl(birthplace, Validators.required),
+      address: new FormControl(address, Validators.required),
+      city: new FormControl(city, Validators.required),
+      classroom: new FormControl(classroom, Validators.required),
+      photo: new FormControl(photo)
     });
-    this.imgSrc = 'assets/img/Placeholder.jpg ';
-    this.selectedImage = null;
+  }
 
+  compareByValue(f1: any, f2: any) {
+    return f1 && f2 && f1.id === f2.id;
   }
 }

@@ -2,6 +2,7 @@ import {Component,  OnInit} from '@angular/core';
 import {Student} from "../student";
 import {StudentService} from "../../services/student.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {ClassroomService} from '../../services/classroom.service';
 
 @Component({
   selector: 'app-student-list',
@@ -14,11 +15,19 @@ export class StudentListComponent implements OnInit {
 
   constructor(private studentService: StudentService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private classroomService: ClassroomService) {
   }
 
   ngOnInit(): void {
-    this.students = this.studentService.getStudents();
+    this.studentService.getStudents().subscribe((data: Student[]) => {
+      this.students = data;
+      this.students.forEach((student) => {
+        this.classroomService.getClassroomById(student.classroom).subscribe(value => {
+          student.classroom = value;
+        });
+      });
+    });
   }
 
   onNewStudent() {

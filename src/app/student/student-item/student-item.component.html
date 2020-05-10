@@ -1,6 +1,6 @@
 <mat-card class="example-card" appShadow>
   <mat-card-header>
-    <div mat-card-avatar [style.backgroundImage]="getImgContent(student.photo)" style="background-size: cover;" ></div>
+    <div mat-card-avatar [style.backgroundImage]="getImgContent(imgSrc)" style="background-size: cover;" ></div>
     <mat-card-title>{{student.firstName | firstcharcateruppercase }} {{student.lastName | uppercase}}</mat-card-title>
     <mat-card-subtitle>{{student.classroom.cycle  | firstcharcateruppercase}}</mat-card-subtitle>
   </mat-card-header>

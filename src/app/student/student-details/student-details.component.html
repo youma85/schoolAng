@@ -1,4 +1,4 @@
-<form class="example-form" [formGroup]="studentForm" (ngSubmit)="saveStudent()">
+<form class="example-form" *ngIf="studentForm" [formGroup]="studentForm" (ngSubmit)="saveStudent()">
   <mat-form-field class="example-full-width">
     <mat-label>First Name</mat-label>
     <input matInput placeholder="First Name" formControlName="firstName">
@@ -11,7 +11,7 @@
 
   <mat-form-field class="example-full-width">
     <mat-label>Birth Date</mat-label>
-    <input matInput [matDatepicker]="picker"  formControlName="birthDate">
+    <input matInput [matDatepicker]="picker" formControlName="birthDate">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
@@ -28,14 +28,13 @@
 
   <mat-form-field class="example-full-width">
     <mat-label>City</mat-label>
-    <input matInput placeholder="City"  formControlName="city">
+    <input matInput placeholder="City" formControlName="city">
   </mat-form-field>
-
 
 
   <mat-form-field class="example-full-width">
     <mat-label>Classroom</mat-label>
-    <mat-select formControlName="classroom">
+    <mat-select formControlName="classroom" [compareWith]="compareFn">
       <mat-option>--</mat-option>
       <mat-option *ngFor="let classroom of classrooms" [value]="classroom">
         {{classroom.cycle}} - {{classroom.level}} - {{classroom.label}}
