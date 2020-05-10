@@ -3,7 +3,9 @@ import {ClassroomService} from './classroom.service';
 import {Student} from '../student/student';
 import {Observable, Subject} from 'rxjs';
 
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {AuthService} from './auth.service';
+import {exhaustMap, take} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +21,24 @@ export class StudentService {
   studentEndPoint = `${this.url}/students`;
 
   constructor(private classroomService: ClassroomService,
-              private  http: HttpClient) {
+              private  http: HttpClient,
+              private authService: AuthService) {
   }
 
+  // take(1): take only one value and automatically unsubscribe
+  // exhaustMap: waits for the first observable to complete
+  // and give us the result of the user observable
   getStudents(): Observable<any> {
-    return this.http.get<any[]>(this.studentEndPoint);
+    return this.authService.user.pipe(
+      take(1),
+      exhaustMap(user => {
+        const httpOptions = {
+          headers: new HttpHeaders({
+            Authorization: `Bearer ${user.token}`
+          })
+        };
+        return this.http.get<any[]>(this.studentEndPoint, httpOptions);
+      }));
   }
 
   getStudent(id: number) {

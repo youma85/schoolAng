@@ -60,3 +60,8 @@ When login or signing up store user data returned by the api
 
 display links in navbar according to user status
 
+**Adding the Token to Outgoing Requests**
+
+get the stored token and add it to the requests
+
+
