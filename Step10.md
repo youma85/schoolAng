@@ -56,3 +56,7 @@ create a new class user
 
 When login or signing up store user data returned by the api
 
+**manage navbar according to authentication**
+
+display links in navbar according to user status
+
