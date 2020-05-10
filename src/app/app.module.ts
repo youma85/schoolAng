@@ -28,10 +28,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {environment} from '../environments/environment';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireStorageModule} from '@angular/fire/storage';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthComponent} from './auth/auth.component';
 import {LoadingComponent} from './loading/loading.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {AuthInterceptorService} from './utils/auth-interceptor.service';
 
 export const MY_FORMAT: MatDateFormats = {
   parse: {
@@ -84,7 +85,8 @@ export const MY_FORMAT: MatDateFormats = {
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
-    { provide: MAT_DATE_FORMATS, useValue: MY_FORMAT }
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMAT },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}
   ],
   bootstrap: [AppComponent]
 })

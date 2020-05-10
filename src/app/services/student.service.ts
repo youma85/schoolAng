@@ -29,16 +29,7 @@ export class StudentService {
   // exhaustMap: waits for the first observable to complete
   // and give us the result of the user observable
   getStudents(): Observable<any> {
-    return this.authService.user.pipe(
-      take(1),
-      exhaustMap(user => {
-        const httpOptions = {
-          headers: new HttpHeaders({
-            Authorization: `Bearer ${user.token}`
-          })
-        };
-        return this.http.get<any[]>(this.studentEndPoint, httpOptions);
-      }));
+    return this.http.get<any[]>(this.studentEndPoint);
   }
 
   getStudent(id: number) {

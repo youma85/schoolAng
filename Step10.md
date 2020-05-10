@@ -64,4 +64,8 @@ display links in navbar according to user status
 
 get the stored token and add it to the requests
 
+**Attaching the Token with an Interceptor**
+
+create a new service to attach the token to a request
+
 
