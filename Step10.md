@@ -41,3 +41,12 @@ In the auth component use the method created to sign up
 **Add a loading spinner**
 
 Add a material progress spinner
+
+**Error Handling**
+
+**Login request**
+
+create a method that send a Post request to firebase
+
+In the auth component use the method created to sign in
+
