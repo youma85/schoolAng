@@ -5,3 +5,7 @@
 >ng g c auth
 
 create the auth component and its routes 
+
+**Handling form input**
+
+Handle user input
