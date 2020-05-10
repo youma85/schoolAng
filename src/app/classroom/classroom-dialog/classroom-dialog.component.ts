@@ -47,12 +47,15 @@ export class ClassroomDialogComponent implements OnInit {
     this.classroom.cycle = form.value.cycle;
 
     if (this.editMode){
-      this.classroomService.updateClassroom(this.classroom);
+      this.classroomService.updateClassroom(this.classroom).subscribe(value => {
+        this.classroomService.classroomsChanged.next();
+        this.dialogRef.close();
+      });
     }else {
-      this.classroomService.addClassroom(this.classroom);
+      this.classroomService.addClassroom(this.classroom).subscribe(value => {
+        this.classroomService.classroomsChanged.next();
+        this.dialogRef.close();
+      });
     }
-
-    this.classroomService.classroomsChanged.next();
-    this.dialogRef.close();
   }
 }

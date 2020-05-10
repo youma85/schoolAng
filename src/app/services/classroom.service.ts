@@ -1,36 +1,35 @@
-import { Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
-import {Classroom} from '../classroom/classroom';
+import {Injectable} from '@angular/core';
+import {Classroom} from "../classroom/classroom";
+import {Observable, Subject} from "rxjs";
+import {HttpClient, HttpParams} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClassroomService {
 
+  url='http://localhost:3000';
+  classroomEndPoint= `${this.url}/classrooms`;
+
   classroomsChanged = new Subject<void>();
 
-  classrooms: Classroom[] = [
-    new Classroom(0, 'primaire', 'CP', 'A'),
-    new Classroom(1, 'primaire', 'CP', 'B'),
-    new Classroom(2, 'primaire', 'CE1', 'A'),
-  ];
-  constructor() { }
+  classrooms: Classroom[] = [];
 
-  getClassrooms(): Classroom[]{
-    return this.classrooms;
+  constructor(private  http:HttpClient) { }
+
+  getClassrooms(): Observable<any> {
+    return this.http.get<any>(this.classroomEndPoint);
   }
 
-  addClassroom(classroom: Classroom): Classroom[]{
-    classroom.id = this.classrooms.length;
-    this.classrooms.push(classroom);
-    return this.classrooms;
+  addClassroom(classroom: Classroom): Observable<any>{
+    return this.http.post(this.classroomEndPoint, classroom);
   }
 
   getClassroomById(id: any) {
-    return this.classrooms[id];
+    return this.http.get<any>(`${this.classroomEndPoint}/${id}`);
   }
 
-  updateClassroom(classroom: Classroom) {
-    this.classrooms[classroom.id] = classroom;
+  updateClassroom(classroom: Classroom) : Observable<any>{
+    return this.http.patch(`${this.classroomEndPoint}/${classroom.id}`, classroom);
   }
 }

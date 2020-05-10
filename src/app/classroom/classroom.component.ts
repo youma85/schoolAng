@@ -20,21 +20,27 @@ export class ClassroomComponent implements OnInit {
               public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource(this.classroomService.getClassrooms());
+    this.classroomService.getClassrooms().subscribe((data: Classroom[]) => {
+      this.dataSource = new MatTableDataSource(data);
+    });
 
     this.classroomService.classroomsChanged.subscribe(() => {
-      this.dataSource = new MatTableDataSource(this.classroomService.getClassrooms());
+      this.classroomService.getClassrooms().subscribe((data: Classroom[]) => {
+        this.dataSource = new MatTableDataSource(data);
+      });
     });
   }
 
   showDataInDialog(id: any) {
-    const dialogRef = this.dialog.open(ClassroomDialogComponent, {
-      width: '300px',
-      data: this.classroomService.getClassroomById(id)
-    });
+    this.classroomService.getClassroomById(id).subscribe(value => {
+      const dialogRef = this.dialog.open(ClassroomDialogComponent, {
+        width: '300px',
+        data: value
+      });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+      });
     });
   }
 

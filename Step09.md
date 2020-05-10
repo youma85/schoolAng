@@ -12,3 +12,12 @@ create a data file that contains classrooms and students
 
 Add HttpClientModule to app.module
 
+**Manage classrooms with API**
+
+Remove list from service 
+
+get classrooms from the api server
+
+add a classroom to the server
+
+update classroom with api server
