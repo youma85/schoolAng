@@ -38,7 +38,9 @@ export class StudentDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.classrooms = this.classroomService.getClassrooms();
+    this.classroomService.getClassrooms().subscribe((data: Classroom[]) => {
+      this.classrooms = data;
+    });
 
     this.route.params.subscribe((params: Params) => {
       this.id = +params.id;
