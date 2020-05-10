@@ -16,7 +16,7 @@
       "id": "2",
       "cycle": "primaire",
       "level": "CE1",
-      "label": "A"
+      "label": "B"
     },
     {
       "id": "3",
@@ -28,12 +28,12 @@
       "id": 4,
       "cycle": "primaire",
       "level": "CM1",
-      "label": "B"
+      "label": "A"
     },
     {
       "cycle": "primaire",
       "level": "CM1",
-      "label": "A",
+      "label": "B",
       "id": 5
     }
   ],
@@ -60,5 +60,6 @@
       "photo": "images/Ahmed_test2.png",
       "id": 2
     }
-  ]
+  ],
+  "users": []
 }

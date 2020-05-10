@@ -26,6 +26,8 @@ create server routes file with the following content:
 
 Run the server with:
 
->json-server-auth src/app/utils/auth_db.json -r src/app/utils/routes.json
+>json-server-auth src/app/utils/db.json -r src/app/utils/routes.json
+
+add users array to db file
 
 
