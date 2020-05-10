@@ -46,6 +46,10 @@ export class AuthService {
       }));
   }
 
+  logout() {
+    this.user.next(null);
+  }
+
   private handleAuthenctication(email: string, token: string) {
     const usr = new User(email, token);
     this.user.next(usr);

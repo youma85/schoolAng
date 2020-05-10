@@ -6,6 +6,6 @@
   <a mat-button routerLink="/students" routerLinkActive="active">Students</a>
   <a mat-button routerLink="/classrooms" routerLinkActive="active" *ngIf="isAuthenticated">Classrooms</a>
   <a mat-raised-button routerLink="/login" color="accent" *ngIf="!isAuthenticated">Sign Up</a>
-  <a mat-raised-button routerLink="/login" color="accent" *ngIf="isAuthenticated">Logout</a>
+  <a mat-raised-button (click)="onLogout()" color="accent" *ngIf="isAuthenticated">Logout</a>
 </mat-toolbar>
 
