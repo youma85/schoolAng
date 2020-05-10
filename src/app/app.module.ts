@@ -30,6 +30,8 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {HttpClientModule} from '@angular/common/http';
 import {AuthComponent} from './auth/auth.component';
+import {LoadingComponent} from './loading/loading.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 export const MY_FORMAT: MatDateFormats = {
   parse: {
@@ -55,7 +57,8 @@ export const MY_FORMAT: MatDateFormats = {
     StudentDetailsComponent,
     ShadowDirective,
     FirstcharcateruppercasePipe,
-    AuthComponent
+    AuthComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +79,8 @@ export const MY_FORMAT: MatDateFormats = {
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },

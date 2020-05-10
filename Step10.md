@@ -37,3 +37,7 @@ Create auth service
 and create a method that send a Post request to server:
 
 In the auth component use the method created to sign up
+
+**Add a loading spinner**
+
+Add a material progress spinner
