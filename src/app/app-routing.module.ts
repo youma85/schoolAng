@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
-import {RouterModule, Routes} from "@angular/router";
-import {StudentComponent} from "./student/student.component";
-import {StudentListComponent} from "./student/student-list/student-list.component";
-import {StudentDetailsComponent} from "./student/student-details/student-details.component";
-import {ClassroomComponent} from "./classroom/classroom.component";
+import {RouterModule, Routes} from '@angular/router';
+import {StudentComponent} from './student/student.component';
+import {StudentListComponent} from './student/student-list/student-list.component';
+import {StudentDetailsComponent} from './student/student-details/student-details.component';
+import {ClassroomComponent} from './classroom/classroom.component';
+import {AuthComponent} from './auth/auth.component';
 
 
 
@@ -14,7 +15,8 @@ const appRoutes: Routes = [
       {path: 'new', component: StudentDetailsComponent},
       {path: ':id', component: StudentDetailsComponent}
     ]},
-  {path: 'classrooms', component: ClassroomComponent}
+  {path: 'classrooms', component: ClassroomComponent},
+  {path: 'login', component: AuthComponent}
 ];
 
 @NgModule({

@@ -10,16 +10,16 @@ import { ClassroomDialogComponent } from './classroom/classroom-dialog/classroom
 import { StudentListComponent } from './student/student-list/student-list.component';
 import { StudentItemComponent } from './student/student-item/student-item.component';
 import { StudentDetailsComponent } from './student/student-details/student-details.component';
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatIconModule} from "@angular/material/icon";
-import {MatCardModule} from "@angular/material/card";
-import {MatTableModule} from "@angular/material/table";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
-import {MatButtonModule} from "@angular/material/button";
-import {MatGridListModule} from "@angular/material/grid-list";
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatSelectModule} from "@angular/material/select";
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSelectModule} from '@angular/material/select';
 import {MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats, MatNativeDateModule} from '@angular/material/core';
 import { ShadowDirective } from './utils/shadow.directive';
 import { FirstcharcateruppercasePipe } from './utils/firstcharcateruppercase.pipe';
@@ -29,6 +29,7 @@ import {environment} from '../environments/environment';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {HttpClientModule} from '@angular/common/http';
+import {AuthComponent} from './auth/auth.component';
 
 export const MY_FORMAT: MatDateFormats = {
   parse: {
@@ -53,7 +54,8 @@ export const MY_FORMAT: MatDateFormats = {
     StudentItemComponent,
     StudentDetailsComponent,
     ShadowDirective,
-    FirstcharcateruppercasePipe
+    FirstcharcateruppercasePipe,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
