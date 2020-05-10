@@ -8,3 +8,7 @@ npm install -g json-server-auth
 
 create a data file that contains classrooms and students
 
+**add HttpClientModule module**
+
+Add HttpClientModule to app.module
+

@@ -28,6 +28,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {environment} from '../environments/environment';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireStorageModule} from '@angular/fire/storage';
+import {HttpClientModule} from '@angular/common/http';
 
 export const MY_FORMAT: MatDateFormats = {
   parse: {
@@ -72,7 +73,8 @@ export const MY_FORMAT: MatDateFormats = {
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
