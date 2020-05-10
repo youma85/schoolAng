@@ -76,6 +76,8 @@ add button logout
 
 Store user in localStorage in order to verify if the user is already authenticated
 
+**remove data from localstorage**
 
+Remove user data from local storage when logout
 
 
