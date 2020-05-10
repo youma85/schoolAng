@@ -50,3 +50,9 @@ create a method that send a Post request to firebase
 
 In the auth component use the method created to sign in
 
+**Creating & storing user**
+ 
+create a new class user
+
+When login or signing up store user data returned by the api
+
