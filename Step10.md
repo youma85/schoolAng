@@ -80,4 +80,6 @@ Store user in localStorage in order to verify if the user is already authenticat
 
 Remove user data from local storage when logout
 
+**Adding an Auth guard**
 
+create a canActivate guards to handle routes
