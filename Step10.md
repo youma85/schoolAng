@@ -30,4 +30,10 @@ Run the server with:
 
 add users array to db file
 
+**Sing up request**
 
+Create auth service
+
+and create a method that send a Post request to server:
+
+In the auth component use the method created to sign up
